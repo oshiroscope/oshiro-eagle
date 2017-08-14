@@ -4,3 +4,6 @@
 [submodule "lbr/submodule/chiengineer-Eagle-Libraries"]
 	path = lbr/submodule/chiengineer-Eagle-Libraries
 	url = https://github.com/chiengineer/Eagle-Libraries.git
+[submodule "lbr/submodule/JMS-Eagle-Library"]
+	path = lbr/submodule/JMS-Eagle-Library
+	url = https://github.com/jmsaavedra/JMS-Eagle-Library.git
