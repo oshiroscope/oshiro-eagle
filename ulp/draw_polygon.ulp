@@ -1,0 +1,49 @@
+real deg2rad(real deg) { return deg * PI / 180; }
+real rad2deg(real rad) { return rad * 180 / PI; }
+
+string draw_wire(string name, real width, real x0, real y0, real x1, real y1){
+  string ss;
+  if(name == ""){
+    sprintf(ss, "WIRE %f (%f %f) (%f %f);",
+      width, x0, y0, x1, y1
+    );
+  }else{
+    sprintf(ss, "WIRE '%s' %f (%f %f) (%f %f);",
+      name, width, x0, y0, x1, y1
+    );
+  }
+  return ss;
+}
+
+output("sample.txt", "at"){
+  if (argc != 3 && argc != 5) {
+    dlgMessageBox("Incorrect number of arguments","Ok");
+    exit(1);
+  }
+
+  string s;
+  string ss;
+  int i = 0;
+
+  sprintf(ss, "LAYER 20;");
+  s += ss;
+  sprintf(ss, "SET WIRE_BEND 2;");
+  s += ss;
+
+  real radius = strtod(argv[1]);
+  int N = strtol(argv[2]);
+  real angle = 2 * PI / N;
+  real x_offset = 0.0;
+  real y_offset = 0.0;
+
+  if(argc == 5){
+    x_offset = strtod(argv[3]);
+    y_offset = strtod(argv[4]);
+  }
+
+  for(i = 0; i < N; i++){
+    s += draw_wire("", 0, radius * sin(angle * i) + x_offset, radius * cos(angle * i) + y_offset,  radius * sin(angle * (i + 1)) + x_offset, radius * cos(angle * (i + 1)) + y_offset);
+  }
+  dlgMessageBox(s);
+  exit(s);
+}
