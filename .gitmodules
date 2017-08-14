@@ -1,0 +1,6 @@
+[submodule "lbr/submodule/yuhki50-eagle-pcb-library"]
+	path = lbr/submodule/yuhki50-eagle-pcb-library
+	url = https://github.com/yuhki50/eagle-pcb-library.git
+[submodule "lbr/submodule/chiengineer-Eagle-Libraries"]
+	path = lbr/submodule/chiengineer-Eagle-Libraries
+	url = https://github.com/chiengineer/Eagle-Libraries.git
